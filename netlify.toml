@@ -1,0 +1,20 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# IMPORTANT: This admin panel should ONLY be accessed via a private Netlify URL.
+# Do NOT share the URL publicly. Use Netlify's password protection feature
+# under Site Settings > Access control > Password protection for extra security.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "no-store"
